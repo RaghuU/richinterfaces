@@ -1,4 +1,4 @@
-package org.joinfaces.richfaces.example.beans;
+/*package org.joinfaces.richfaces.example.beans;
 
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
@@ -32,4 +32,4 @@ public class PanelMenuBean implements Serializable {
 	public void updateCurrent(ItemChangeEvent event) {
 		setCurrent(event.getNewItemName());
 	}
-}
+}*/

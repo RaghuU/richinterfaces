@@ -1,4 +1,4 @@
-package org.joinfaces.richfaces.example.beans;
+/*package org.joinfaces.richfaces.example.beans;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
@@ -88,4 +88,4 @@ public class DragDropBean implements Serializable
 		source.add(new Framework("Symfony", Framework.Family.php));
 		source.add(new Framework("PowerWEB", Framework.Family.dotNet));
 	}
-}
+}*/

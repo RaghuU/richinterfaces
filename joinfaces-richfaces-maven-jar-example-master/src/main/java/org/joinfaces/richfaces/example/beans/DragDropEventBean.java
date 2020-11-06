@@ -1,4 +1,4 @@
-package org.joinfaces.richfaces.example.beans;
+/*package org.joinfaces.richfaces.example.beans;
 
 import org.joinfaces.richfaces.example.model.Framework;
 import org.richfaces.event.DropEvent;
@@ -22,4 +22,4 @@ public class DragDropEventBean implements DropListener {
     public void processDrop(DropEvent event) {
         dragDropBean.moveFramework((Framework) event.getDragValue());
     }
-}
+}*/

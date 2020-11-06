@@ -9,11 +9,7 @@ import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Copied and adapted from http://showcase.richfaces.org/richfaces/component-sample.jsf?demo=ajax&sample=selectsUpdates&skin=blueSky
- *
- * @author Julian Ignacio
- */
+
 @Named
 @Getter
 @Setter
