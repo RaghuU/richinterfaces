@@ -1,3 +1,3 @@
-INSERT INTO users VALUES (1, 'mkyong', 'mkyong@gmail.com');
-INSERT INTO users VALUES (2, 'alex', 'alex@yahoo.com');
-INSERT INTO users VALUES (3, 'joel', 'joel@gmail.com');
+INSERT INTO users VALUES (1, 'kumar', 'kumar@gmail.com');
+INSERT INTO users VALUES (2, 'ram', 'sai@yahoo.com');
+INSERT INTO users VALUES (3, 'sudheer', 'sudheer@gmail.com');

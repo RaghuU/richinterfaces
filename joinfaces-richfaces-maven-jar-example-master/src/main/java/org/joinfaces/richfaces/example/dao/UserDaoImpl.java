@@ -26,12 +26,12 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public User findByName(String name) {
+	public String findByName(String name) {
 		
 		//String sql = "SELECT * FROM users WHERE name=:name";
 		
-		User result = jdbcTemplate.queryForObject("SELECT * FROM users WHERE name= ?", 
-		        User.class, name); 
+		String result = jdbcTemplate.queryForObject("SELECT name FROM users WHERE name= ?", 
+				String.class, name); 
 		
         return result;
         

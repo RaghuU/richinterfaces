@@ -12,7 +12,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 @Configuration
 public class DerbyDataSource {
 
-	//jdbc:derby:memory:testdb
+	
 	@Bean
 	public DataSource dataSource() {
 
