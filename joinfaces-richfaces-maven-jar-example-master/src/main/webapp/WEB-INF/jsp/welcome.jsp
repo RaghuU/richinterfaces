@@ -13,6 +13,10 @@
     <div align="center">
        
             <table border="0">
+            	<tr>
+                  	<td><a href="start.xhtml">RichFaces</a> 
+                    </td>
+                </tr>
                 <tr>
                     <td colspan="2" align="center"><h2>Security Vulnarability Issues</h2></td>
                 </tr>
