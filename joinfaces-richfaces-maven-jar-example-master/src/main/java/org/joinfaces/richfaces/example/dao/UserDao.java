@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface UserDao {
 
-	String findByName(String name);
+	List<User> findByName(String name);
 	
 	List<User> findAll();
 
