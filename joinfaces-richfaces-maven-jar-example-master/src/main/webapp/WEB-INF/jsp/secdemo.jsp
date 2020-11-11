@@ -11,7 +11,10 @@
 </head>
 <body>
     <div align="center">
-        <form:form action="userserch" method="post" modelAttribute="userForm">
+        <form:form action="usersearch" method="post" modelAttribute="userForm">
+        <tr>
+                 <td>  <a href="welcome">HOME</a> </td>
+                  </tr>
             <table border="0">
                 <tr>
                     <td colspan="2" align="center"><h2>User Search</h2></td>

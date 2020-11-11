@@ -30,20 +30,15 @@ public class VunerabilityController {
 		return "welcome";
 	}
 	
-	@RequestMapping("/secmap")
+	@RequestMapping("/sqlinj")
 	public String secmap(Map<String, Object> model) {
-		/*
-		 * List<User> user = userDao.findAll(); for(User obj:user) {
-		 * System.out.println(obj); } user = userDao.findByName("1 OR 1=1");
-		 * System.out.println("after attack "); for(User obj:user) {
-		 * System.out.println(obj.getName()); }
-		 */
+		
 		 User userForm = new User();
 		 model.put("userForm", userForm);
 		
 		return "secdemo";
 	}
-	@PostMapping("/userserch")
+	@PostMapping("/usersearch")
 	public ModelAndView getUserdata(@ModelAttribute("userForm") User user) {
 		ModelAndView mv = new ModelAndView("secdemo");
 		List<User> usersList=null;

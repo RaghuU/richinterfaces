@@ -1,0 +1,13 @@
+Project Name: Vunerability demo
+URL:localhost:8080/welcome
+
+Project import: For running the application import the project as maven project.Open VunerabilityDemoApplication.java and run as Java application.
+
+Login Credentials: UserName:sridhar;Password:sridhar
+
+Vunerability URL's
+SQL injection url: localhost:8080/sqlinj
+XSS attack url: localhost:8080/xssattack?xss=<script>alert(1)</script>
+XSS Safe url: localhost:8080/xsssafe?xss=<script>alert(1)</script>
+
+
