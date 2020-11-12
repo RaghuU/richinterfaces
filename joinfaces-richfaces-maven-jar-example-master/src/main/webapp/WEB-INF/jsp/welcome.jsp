@@ -31,7 +31,18 @@
                   	<td><a href="xsssafe?xss=<script>alert(1)</script>">XSS Safe</a> 
                     </td>
                     </tr> 
-               
+               <tr>
+                 <td>  <a href="codeinject?filepath=/tmp;cat /etc/passwd">Command Injection</a> </td>
+                  </tr>
+                  <tr>
+                 <td>  <a href="redirect?url=http://www.google.com">Redirect</a> </td>
+                  </tr>
+                  <tr>
+                 <td>  <a href="vuln/referer?callback_=test">JSONP</a> </td>
+                  </tr>
+                  <tr>
+                 <td>  <a href="path_traversal/vul?filepath=../../../../../etc/passwd">PathTraversal</a> </td>
+                  </tr>
                
             </table>
        
