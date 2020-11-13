@@ -1,17 +1,12 @@
 package org.vunerability.demo;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.security.Principal;
-import java.util.HashMap;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.WebUtils;
-import org.vunerability.demo.beans.Config;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.vunerability.demo.dao.User;
 import org.vunerability.demo.dao.UserDao;
-
-import com.alibaba.fastjson.JSON;
 
 
 @Controller
@@ -35,8 +27,9 @@ public class VunerabilityController {
 	@Autowired
 	UserDao userDao;
 	
-	private String callback = Config.getBusinessCallback();
 	
+    private static String UPLOADED_FOLDER = "/tmp/";
+    
 	@RequestMapping("/welcome")
 	public String firstPage(Map<String, Object> model) {
 		
@@ -77,118 +70,35 @@ public class VunerabilityController {
 		return mv;
 	}
 	
-	 /**
-     * Vuln Code.
-     * ReflectXSS
-     * http://localhost:8080/xssattack?xss=<script>alert(1)</script>
-     *
-     * @param xss unescape string
-     */
-    @RequestMapping("/xssattack")
-    @ResponseBody
-    public static String reflect(String xss) {
-        return xss;
-    }
-    
-    @RequestMapping("/xsssafe")
-    @ResponseBody
-    public static String safe(String xss) {
-        return encode(xss);
-    }
-    
-    /** Command Injection
-     * http://localhost:8080/codeinject?filepath=/tmp;cat /etc/passwd
-     *
-     * @param filepath filepath
-     * @return result
-     */
-    @GetMapping("/codeinject")
-    public String codeInject(String filepath) throws IOException {
+	 @GetMapping("/fileupload/pic")
+	    public String uploadPic() {
+	        return "uploadPic"; // return uploadPic.html page
+	    }
 
-        String[] cmdList = new String[]{"sh", "-c", "ls -la " + filepath};
-        ProcessBuilder builder = new ProcessBuilder(cmdList);
-        builder.redirectErrorStream(true);
-        Process process = builder.start();
-        return convertStreamToString(process.getInputStream());
-    }
-    
-    /** Redirect vunerability
-     * http://localhost:8080/urlRedirect/redirect?url=http://www.google.com
-     */
-    @GetMapping("/redirect")
-    public String redirect(@RequestParam("url") String url) {
-        return "redirect:" + url;
-    }
-    
-    /**JSONP vunerability
-     * Set the response content-type to application/javascript.
-     * <p>
-     * http://localhost:8080/vuln/referer?callback_=test
-     */
-    @RequestMapping(value = "/vuln/referer", produces = "application/javascript")
-    public String referer(HttpServletRequest request) {
-        String callback = request.getParameter(this.callback);
-        return Config.json2Jsonp(callback, getUserInfo2JsonStr(request));
-    }
-    
-    /** PathTraversal
-     * http://localhost:8080/path_traversal/vul?filepath=../../../../../etc/passwd
-     */
-    @GetMapping("/path_traversal/vul")
-    public String getImage(String filepath) throws IOException {
-        return Config.getImgBase64(filepath);
-    }
-    
-    
-    @GetMapping("/rce/exec")
-    public String CommandExec(String cmd) {
-        Runtime run = Runtime.getRuntime();
-        StringBuilder sb = new StringBuilder();
+	    @PostMapping("/fileupload/upload")
+	    public String singleFileUpload(@RequestParam("file") MultipartFile file,
+	                                   RedirectAttributes redirectAttributes) {
+	        if (file.isEmpty()) {
+	            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+	            return "redirect:/file/status";
+	        }
 
-        try {
-            Process p = run.exec(cmd);
-            BufferedInputStream in = new BufferedInputStream(p.getInputStream());
-            BufferedReader inBr = new BufferedReader(new InputStreamReader(in));
-            String tmpStr;
+	        try {
+	            // Get the file and save it somewhere
+	            byte[] bytes = file.getBytes();
+	            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+	            Files.write(path, bytes);
 
-            while ((tmpStr = inBr.readLine()) != null) {
-                sb.append(tmpStr);
-            }
+	            redirectAttributes.addFlashAttribute("message",
+	                    "You successfully uploaded '" + UPLOADED_FOLDER + file.getOriginalFilename() + "'");
 
-            if (p.waitFor() != 0) {
-                if (p.exitValue() == 1)
-                    return "Command exec failed!!";
-            }
+	        } catch (IOException e) {
+	            redirectAttributes.addFlashAttribute("message", "upload failed");
+	            e.printStackTrace();
+	            return "redirect:/file/status";
+	        }
 
-            inBr.close();
-            in.close();
-        } catch (Exception e) {
-            return "Except";
-        }
-        return sb.toString();
-    }
+	        return "redirect:/file/status";
+	    }
     
-    public static String convertStreamToString(java.io.InputStream is) {
-        java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
-        return s.hasNext() ? s.next() : "";
-    }
-    
-    public static String getUserInfo2JsonStr(HttpServletRequest request) {
-        Principal principal = request.getUserPrincipal();
-        String username = principal.getName();
-        Map<String, String> m = new HashMap<>();
-        m.put("Username", username);
-
-        return JSON.toJSONString(m);
-    }
-    
-    private static String encode(String origin) {
-        origin = StringUtils.replace(origin, "&", "&amp;");
-        origin = StringUtils.replace(origin, "<", "&lt;");
-        origin = StringUtils.replace(origin, ">", "&gt;");
-        origin = StringUtils.replace(origin, "\"", "&quot;");
-        origin = StringUtils.replace(origin, "'", "&#x27;");
-        origin = StringUtils.replace(origin, "/", "&#x2F;");
-        return origin;
-    }
 }

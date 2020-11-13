@@ -43,7 +43,20 @@
                   <tr>
                  <td>  <a href="path_traversal/vul?filepath=../../../../../etc/passwd">PathTraversal</a> </td>
                   </tr>
-               
+                  <tr>
+                 <td>  <a href="ssrf/vuln?url=url=file:///etc/passwd">SSRF</a> </td>
+                  </tr>
+                   <tr>
+                 <td>  <a href="xstream">RCEXtream</a> </td>
+                  </tr>
+                  <tr>
+                 <td>  <a href="crossorigin">CrossOrigin</a> </td>
+                  </tr> <tr>
+                 <td>  <a href="/rce/exec">RCE</a> </td>
+                  </tr>
+                  <tr>
+                 <td>  <a href="/fileupload/pic">File Upload</a> </td>
+                  </tr>
             </table>
        
     </div>
