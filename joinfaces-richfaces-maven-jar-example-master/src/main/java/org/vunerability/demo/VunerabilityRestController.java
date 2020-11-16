@@ -7,8 +7,11 @@ import java.io.InputStreamReader;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +30,6 @@ import org.vunerability.demo.dao.UserDao;
 import com.alibaba.fastjson.JSON;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
-import java.util.concurrent.atomic.AtomicLong;
 
 
 @RestController
@@ -148,6 +150,16 @@ public class VunerabilityRestController {
 		System.out.println("==== get greeting ====");
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
+   	
+   	@RequestMapping("/crlf/safecode")
+    @ResponseBody
+    public void crlf(HttpServletRequest request, HttpServletResponse response) {
+        response.addHeader("test1", request.getParameter("test1"));
+        response.setHeader("test2", request.getParameter("test2"));
+        String author = request.getParameter("test3");
+        Cookie cookie = new Cookie("test3", author);
+        response.addCookie(cookie);
+    }
    
     @GetMapping("/rce/exec")
     public String CommandExec(String cmd) {
