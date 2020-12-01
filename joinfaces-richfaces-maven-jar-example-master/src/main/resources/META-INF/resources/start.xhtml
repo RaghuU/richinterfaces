@@ -51,7 +51,6 @@
     <h:body>
         <h:form>
             <h1>Richfaces example</h1>
-           <h1> <h:outputLink value="${pageContext.request.contextPath}/j_spring_security_logout">logout</h:outputLink></h1>
             <rich:panel header="Select component + Ajax">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Select the type:" />
@@ -85,7 +84,7 @@
                         #{node.name}
                     </rich:treeNode>
                     <rich:treeNode type="company" iconExpanded="/images/tree/disc.gif" iconCollapsed="/images/tree/disc.gif">
-                        #{node.name}
+                       	 #{node.name}
                     </rich:treeNode>
                     <rich:treeNode type="cd" iconLeaf="/images/tree/song.gif">
                         #{node.artist} - #{node.name} - #{node.year}
