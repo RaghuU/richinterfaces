@@ -1,4 +1,4 @@
-package org.vunerability.demo.beans.rce;
+/*package org.vunerability.demo.beans.rce;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -28,9 +28,9 @@ import org.richfaces.resource.ResourceUtils;
 import com.sun.faces.facelets.el.TagMethodExpression;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
 
-/*It's a classic deserialization vulnerability, which allows deserialization of arbitrary Java serialized ...
+It's a classic deserialization vulnerability, which allows deserialization of arbitrary Java serialized ...
 It's an EL injection vulnerability, that can lead to remote code execution.
-*/
+
 @Named
 public class Richsploit {
 
@@ -294,4 +294,4 @@ public class Richsploit {
 	private static void printNegative(String string) {
 		System.out.println("[-] "+string);
 	}
-}
+}*/
