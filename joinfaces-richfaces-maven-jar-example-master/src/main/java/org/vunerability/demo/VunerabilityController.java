@@ -39,6 +39,15 @@ public class VunerabilityController {
 		return "welcome";
 	}
 	
+	@RequestMapping("/richfaces")
+	public String richfaces(Map<String, Object> model) {
+		
+		 User userForm = new User();
+		 model.put("userForm", userForm);
+		
+		return "richfaceshome";
+	}
+	
 	@RequestMapping("/sqlinj")
 	public String secmap(Map<String, Object> model) {
 		

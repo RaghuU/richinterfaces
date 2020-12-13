@@ -13,6 +13,7 @@
     <div align="center">
        
             <table border="0">
+            
             	<tr>
                   	<td><a href="start.xhtml">RichFaces</a> 
                     </td>
@@ -61,7 +62,7 @@
                  <td>  <a href="crlf/safecode">CRLF</a> </td>
                   </tr>
             </table>
-       
+            
     </div>
     
    

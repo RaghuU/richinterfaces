@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
 @Named
 public class ProcessBuilderBean {
@@ -40,5 +44,24 @@ public class ProcessBuilderBean {
         }
 
     }
+	
+	public String rceAttack() throws Exception {
+		   User user = new User();
+	       user.setId(0);
+	       user.setUsername("admin");
+
+	       XStream xstream = new XStream(new DomDriver());
+	       String xml = xstream.toXML(user); // Serialize
+	       System.out.println(xml);
+
+	       user = (User) xstream.fromXML(xml); // Deserialize
+	       System.out.println(user.getId() + ": " + user.getUsername());
+	       return xml;
+	   }
+	
+	 public String URLConnectionVuln() {
+		 String url="dict://localhost:11211/stat HTTP/1.1";
+	       return Config.URLConnection(url);
+	   }
 
 }

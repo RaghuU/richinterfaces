@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: JoinFaces Richfaces Example
 Implementation-Version: 1.0.0-SNAPSHOT
-Built-By: admin
+Built-By: Admin
 Implementation-Vendor-Id: org.vunerability.demo
-Build-Jdk: 1.8.0_181
+Build-Jdk: 1.8.0_271
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/vunerability-demo
 Created-By: Maven Integration for Eclipse
