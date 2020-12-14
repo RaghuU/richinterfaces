@@ -81,6 +81,12 @@
 		    <artifactId>commons-codec</artifactId>
 		    <version>1.9</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.richfaces.ui/richfaces-components-ui -->
+		<!-- <dependency>
+		    <groupId>org.richfaces.ui</groupId>
+		    <artifactId>richfaces-components-ui</artifactId>
+		    <version>4.0.0.Final</version>
+		</dependency> -->
 		
 		
 		<!-- <dependency>

@@ -13,6 +13,25 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 @Named
 public class ProcessBuilderBean {
 	
+	private String url;
+	
+	private String outputSSRF;
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public String getOutputSSRF() {
+		return outputSSRF;
+	}
+
+	public void setOutputSSRF(String outputSSRF) {
+		this.outputSSRF = outputSSRF;
+	}
 
 	public void execute(String value) throws IOException {
 
@@ -59,9 +78,10 @@ public class ProcessBuilderBean {
 	       return xml;
 	   }
 	
-	 public String URLConnectionVuln() {
-		 String url="dict://localhost:11211/stat HTTP/1.1";
-	       return Config.URLConnection(url);
+	 public String URLConnectionVuln(String url) {
+		 
+		 	outputSSRF = Config.URLConnection(url);
+	       return "ssrfOutput";
 	   }
 
 }

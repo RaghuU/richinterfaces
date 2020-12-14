@@ -23,6 +23,9 @@
                     </td>
                 </tr>
             <tr>
+                 <td>  <a href="sqlinj">Sql Injection</a> </td>
+            </tr>
+            <tr>
                  <td>  <a href="cmdinj.xhtml">Command Injection</a> </td>
             </tr>
             <tr>
@@ -34,18 +37,18 @@
              <tr>
                  <td>  <a href="xssattack.xhtml">XSS attack</a> </td>
              </tr>
-             <!--  <tr>
-                 <td>  <a href="ssrf/vuln">SSRF</a> </td>
-              </tr> -->
+              <tr>
+                 <td>  <a href="ssrf.xhtml">SSRF</a> </td>
+              </tr>
                <tr>
                  <td>  <a href="filePath.xhtml">File Path Traversal</a> </td>
               </tr>
               <tr>
                  <td>  <a href="fileUpload.xhtml">File Upload</a> </td>
               </tr>
-              <tr>
+              <!-- <tr>
                  <td>  <a href="jsonp.xhtml">JsonP</a> </td>
-              </tr>
+              </tr> -->
             </table>
     </div>
 </body>

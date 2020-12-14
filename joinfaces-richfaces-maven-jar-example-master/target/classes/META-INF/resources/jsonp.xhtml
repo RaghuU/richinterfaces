@@ -13,7 +13,8 @@
 </h:head>
 <h:body>
 	<h:form>
-<h:commandButton value="Execute Json" action="#{jsonPBean.referer()}" />
+	<h:inputText binding="#{input}" />
+	<h:commandButton value="Execute Json" action="#{jsonPBean.referer(input.value)}" />
 	</h:form>
 </h:body>
 </html>

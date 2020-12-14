@@ -13,7 +13,8 @@
 </h:head>
 <h:body>
 	<h:form>
-<h:commandButton value="SSRF Attack" action="#{processBuilderBean.URLConnectionVuln()}" />
+	<h:inputText binding="#{url}" />
+	<h:commandButton value="SSRF URL" action="#{processBuilderBean.URLConnectionVuln(url.value)}" />
 	</h:form>
 </h:body>
 </html>

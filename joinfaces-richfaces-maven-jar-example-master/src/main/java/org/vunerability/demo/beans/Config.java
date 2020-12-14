@@ -17,7 +17,7 @@ import org.springframework.web.util.HtmlUtils;
 
 public class Config {
 
-	private static String businessCallback;
+	private static String businessCallback ="\"This is a quote'";
 	
 	public static String getBusinessCallback() {
         return businessCallback;
